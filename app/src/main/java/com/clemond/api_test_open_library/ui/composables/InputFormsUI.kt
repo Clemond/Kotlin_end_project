@@ -1,5 +1,7 @@
 package com.clemond.api_test_open_library.ui.composables
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,18 +31,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.clemond.api_test_open_library.ui.theme.myBackgroundColorTest
 import com.clemond.api_test_open_library.ui.theme.myColor1
 import com.clemond.api_test_open_library.ui.theme.myColor2
 import com.clemond.api_test_open_library.ui.theme.myColor3
 
 @Composable
-fun InputFormsUI() {
+fun InputFormsUI(navController: NavController) {
     var username by remember { mutableStateOf("")}
     var password by remember { mutableStateOf("")}
 
     val accountUsernames = mutableListOf<String>("user1", "user2", "user3")
     val accountPasswords = mutableListOf<String>("123", "abc", "lego")
+
 
     Surface (
         shadowElevation = 50.dp,
@@ -63,8 +67,13 @@ fun InputFormsUI() {
 
             Button(
                 onClick = {
-                    if (username == accountUsernames[0] && password == accountPasswords[0]) {
+                    if (
+                        username == accountUsernames[0] && password == accountPasswords[0] ||
+                        username == accountUsernames[1] && password == accountPasswords[1] ||
+                        username == accountUsernames[2] && password == accountPasswords[2]
+                            ) {
                         println("Welcome $username, you are logged in")
+                        navController.navigate("HomeScreen")
                     }else{
                         println("Wrong username or password")
                     }
@@ -81,16 +90,5 @@ fun InputFormsUI() {
 @Preview(showBackground = true)
 @Composable
 fun InputFormsUIPreview() {
-    Surface (
-        modifier = Modifier
-            .fillMaxSize()
-    ){
-        Row( modifier = Modifier
-            .background(brush = myBackgroundColorTest),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            InputFormsUI()
-        }
-    }
+    //InputFormsUI()
 }

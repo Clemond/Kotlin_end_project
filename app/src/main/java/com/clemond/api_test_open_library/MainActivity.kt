@@ -35,6 +35,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import android.util.Log
 import coil.compose.rememberImagePainter
+import com.clemond.api_test_open_library.navigation.NavController
 import com.clemond.api_test_open_library.ui.composables.InputFormsUIPreview
 import com.clemond.api_test_open_library.ui.composables.RandomBookScreen
 import com.clemond.api_test_open_library.ui.screens.SignInScreen
@@ -56,11 +57,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                    // Initialize Firebase Auth
-                    auth = Firebase.auth
-
-                    SignInScreen()
+                    NavController()
                 }
             }
         }

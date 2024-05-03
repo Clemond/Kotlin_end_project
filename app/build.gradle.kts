@@ -73,6 +73,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-auth")
 
+    implementation ("com.google.android.material:material:1.4.0")
 
 
     implementation("androidx.core:core-ktx:1.13.0")
