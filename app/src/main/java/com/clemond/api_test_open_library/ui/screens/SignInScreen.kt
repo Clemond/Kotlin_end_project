@@ -28,7 +28,7 @@ fun SignInScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            AppNameUI(name = "Example Name")
+            AppNameUI(name = "Bookstagram")
             Box(modifier = Modifier.padding(vertical = 90.dp)){
                 InputFormsUI()
             }

@@ -38,9 +38,15 @@ import coil.compose.rememberImagePainter
 import com.clemond.api_test_open_library.ui.composables.InputFormsUIPreview
 import com.clemond.api_test_open_library.ui.composables.RandomBookScreen
 import com.clemond.api_test_open_library.ui.screens.SignInScreen
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -50,6 +56,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+                    // Initialize Firebase Auth
+                    auth = Firebase.auth
+
                     SignInScreen()
                 }
             }

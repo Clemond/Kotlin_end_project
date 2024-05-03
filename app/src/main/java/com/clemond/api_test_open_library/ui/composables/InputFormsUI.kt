@@ -18,6 +18,10 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -32,6 +36,12 @@ import com.clemond.api_test_open_library.ui.theme.myColor3
 
 @Composable
 fun InputFormsUI() {
+    var username by remember { mutableStateOf("")}
+    var password by remember { mutableStateOf("")}
+
+    val accountUsernames = mutableListOf<String>("user1", "user2", "user3")
+    val accountPasswords = mutableListOf<String>("123", "abc", "lego")
+
     Surface (
         shadowElevation = 50.dp,
     ){
@@ -41,10 +51,24 @@ fun InputFormsUI() {
         ) {
             FormTitleUI(formTitle = "Sign In")
 
-            InputFieldUi(label = "Username", icon = Icons.Default.Person)
-            InputFieldUi(label = "Password", icon = Icons.Default.Lock)
+            InputFieldUi(label = "Username", icon = Icons.Default.Person){
+                // Update the username state
+                username = it
+            }
+
+            InputFieldUi(label = "Password", icon = Icons.Default.Lock){
+                // Update the password state
+                password = it
+            }
+
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    if (username == accountUsernames[0] && password == accountPasswords[0]) {
+                        println("Welcome $username, you are logged in")
+                    }else{
+                        println("Wrong username or password")
+                    }
+                },
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Gray),
                 modifier = Modifier
                     .padding(bottom = 10.dp)

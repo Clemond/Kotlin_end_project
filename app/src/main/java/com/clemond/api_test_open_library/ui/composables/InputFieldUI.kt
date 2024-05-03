@@ -24,8 +24,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InputFieldUi(label: String, icon: ImageVector) {
-    var text by remember { mutableStateOf("...") }
+                                                        //Callback for the inputValue
+fun InputFieldUi(label: String, icon: ImageVector, onValueChanged: (String) -> Unit) {
+
+    var text by remember { mutableStateOf("") }
 
     Column (modifier = Modifier
         //.fillMaxWidth ()
@@ -35,7 +37,9 @@ fun InputFieldUi(label: String, icon: ImageVector) {
 
         OutlinedTextField(
             value = text,
-            onValueChange = { text = it },
+            onValueChange = {
+                text = it
+                onValueChanged(it) },
             label = { Text(label)},
             trailingIcon = { Icon(imageVector = icon, contentDescription = null)},
             )
@@ -45,5 +49,8 @@ fun InputFieldUi(label: String, icon: ImageVector) {
 @Preview(showBackground = true)
 @Composable
 fun InputFieldUiPreview() {
-    InputFieldUi("Username", icon = Icons.Default.AccountCircle )
+    InputFieldUi("Username", icon = Icons.Default.AccountCircle){
+        //Update the example state
+        val example = it
+    }
 }
