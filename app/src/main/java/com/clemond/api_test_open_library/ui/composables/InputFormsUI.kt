@@ -36,6 +36,7 @@ fun InputFormsUI() {
         shadowElevation = 50.dp,
     ){
         Column(
+            modifier = Modifier,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             FormTitleUI(formTitle = "Sign In")
@@ -57,9 +58,11 @@ fun InputFormsUI() {
 @Composable
 fun InputFormsUIPreview() {
     Surface (
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
     ){
-        Row( Modifier.background(brush = myBackgroundColorTest),
+        Row( modifier = Modifier
+            .background(brush = myBackgroundColorTest),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
