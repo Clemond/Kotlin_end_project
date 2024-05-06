@@ -1,4 +1,4 @@
-package com.clemond.api_test_open_library.ui.composables
+package com.clemond.api_test_open_library.ui.composables.SignInScreenComps
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text

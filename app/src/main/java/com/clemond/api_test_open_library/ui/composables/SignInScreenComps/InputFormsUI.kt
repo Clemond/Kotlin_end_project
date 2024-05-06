@@ -1,18 +1,9 @@
-package com.clemond.api_test_open_library.ui.composables
+package com.clemond.api_test_open_library.ui.composables.SignInScreenComps
 
-import android.content.Context
 import android.widget.Toast
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
@@ -26,19 +17,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.HorizontalAlignmentLine
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.clemond.api_test_open_library.ui.theme.myBackgroundColorTest
-import com.clemond.api_test_open_library.ui.theme.myColor1
-import com.clemond.api_test_open_library.ui.theme.myColor2
-import com.clemond.api_test_open_library.ui.theme.myColor3
 
 @Composable
 fun InputFormsUI(navController: NavController) {
+
+    //For the toast
+    val context = LocalContext.current
+    val wrongCredentialsToast = Toast.makeText(context,"Wrong username or password!", Toast.LENGTH_SHORT)
+
     var username by remember { mutableStateOf("")}
     var password by remember { mutableStateOf("")}
 
@@ -72,10 +63,9 @@ fun InputFormsUI(navController: NavController) {
                         username == accountUsernames[1] && password == accountPasswords[1] ||
                         username == accountUsernames[2] && password == accountPasswords[2]
                             ) {
-                        println("Welcome $username, you are logged in")
                         navController.navigate("HomeScreen")
                     }else{
-                        println("Wrong username or password")
+                        wrongCredentialsToast.show()
                     }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Gray),

@@ -22,5 +22,7 @@ val myColor2 = hexColor("#0eb1b4")
 
 val myColor3 = hexColor("#d5e3e6")
 
+val myBannerColor = hexColor("#ffffcc")
+
 // Gradients
-val myBackgroundColorTest = Brush.verticalGradient(colors = listOf(myColor1, myColor2))
+val myBackgroundColor = Brush.verticalGradient(colors = listOf(myColor1, myColor2))
