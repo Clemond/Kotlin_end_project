@@ -8,31 +8,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.clemond.api_test_open_library.ui.theme.myBannerColor
+
 
 @Composable
-fun HeaderTextUi(text : String) {
+fun BoxTitleTextUi(text : String) {
+
     Column (
-Modifier.padding(top = 15.dp)
-    ){
-    Text(text = text,
-        style = TextStyle(
-            color = Color.Black,
-            fontSize = 28.sp,
-            fontFamily = FontFamily.Cursive,
+        modifier = Modifier
+            .padding(horizontal = 15.dp, vertical = 10.dp)
+    ) {
+        Text(text = text,
+            style = TextStyle(
+                fontSize = 15.sp,
+                fontFamily = FontFamily.Monospace,
+                color = myBannerColor
+            )
         )
-    )
-}
+    }
 
 }
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
-fun HeaderTextPrev() {
+fun BoxTitleTextUiPrev() {
 
-    HeaderTextUi("Bookstagram")
-
+    BoxTitleTextUi("Currently Reading")
 }

@@ -49,7 +49,7 @@ fun HeaderUi() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-            HeaderTextUi()
+            HeaderTextUi("Bookstagram")
             HeaderButtonRowUi()
 
     }
@@ -60,14 +60,11 @@ fun HeaderUi() {
 @Preview(showBackground = true)
 @Composable
 fun HeaderUiPrev() {
-    Surface(modifier = Modifier
-        .fillMaxSize()
-    ) {
-        Column (Modifier.background(brush = myBackgroundColor)
-        ) {
-            HeaderUi()
-        }
 
-    }
+
+            HeaderUi()
+
+
+
 
 }
