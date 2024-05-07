@@ -22,6 +22,8 @@ val myColor2 = hexColor("#0eb1b4")
 
 val myColor3 = hexColor("#d5e3e6")
 
+val headerBackgroundCornerColor = hexColor("#31194a")
+
 val myBannerColor = hexColor("#ffffcc")
 
 // Gradients
