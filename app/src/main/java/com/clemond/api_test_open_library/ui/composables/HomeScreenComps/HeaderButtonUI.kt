@@ -15,11 +15,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.clemond.api_test_open_library.navigation.NavController
 import com.clemond.api_test_open_library.ui.theme.myBackgroundColor
 
 @Composable
-fun HeaderButtonUi(buttonText : String) {
-    TextButton(onClick = { /*TODO*/ }) {
+fun HeaderButtonUi(buttonText : String, navController: NavController, buttonNavigationPoint: String) {
+    TextButton(onClick = { navController.navigate(buttonNavigationPoint) }) {
         Text(text = ("| " + buttonText + " |") ,
             style = TextStyle(
                 color = Color.Black,
@@ -35,7 +37,7 @@ fun HeaderButtonUi(buttonText : String) {
 fun HeaderButtonPrev() {
     Surface (Modifier.fillMaxSize()){
         Row {
-            HeaderButtonUi(buttonText = "Profile")
+            //HeaderButtonUi(buttonText = "Profile")
         }
 
     }

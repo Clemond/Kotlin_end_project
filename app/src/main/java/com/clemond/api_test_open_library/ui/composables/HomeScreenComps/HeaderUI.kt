@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.clemond.api_test_open_library.ui.composables.SignInScreenComps.InputFieldUi
 import com.clemond.api_test_open_library.ui.theme.headerBackgroundCornerColor
 import com.clemond.api_test_open_library.ui.theme.myBackgroundColor
@@ -36,7 +37,7 @@ import com.clemond.api_test_open_library.ui.theme.myBannerColor
 import com.clemond.api_test_open_library.ui.theme.myColor1
 
 @Composable
-fun HeaderUi() {
+fun HeaderUi(navController: NavController) {
 
     Surface (
         shadowElevation = 20.dp,
@@ -50,21 +51,14 @@ fun HeaderUi() {
         verticalArrangement = Arrangement.Center
     ){
             HeaderTextUi("Bookstagram")
-            HeaderButtonRowUi()
-
+            HeaderButtonRowUi(navController)
     }
-
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun HeaderUiPrev() {
-
-
-            HeaderUi()
-
-
-
+//HeaderUi()
 
 }
