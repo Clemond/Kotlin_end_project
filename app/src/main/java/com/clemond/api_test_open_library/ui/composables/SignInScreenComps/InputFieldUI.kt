@@ -1,5 +1,6 @@
 package com.clemond.api_test_open_library.ui.composables.SignInScreenComps
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -35,7 +36,7 @@ fun InputFieldUi(label: String, icon: ImageVector, onValueChanged: (String) -> U
                 text = it
                 onValueChanged(it) },
             label = { Text(label)},
-            trailingIcon = { Icon(imageVector = icon, contentDescription = null)},
+            trailingIcon = { Icon(imageVector = icon, contentDescription = null, modifier = Modifier.clickable { /*onValueChanged(text)*/ println(text) })},
             )
     }
 }

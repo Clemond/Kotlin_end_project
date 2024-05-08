@@ -3,6 +3,7 @@ package com.clemond.api_test_open_library.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -20,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.DisplayBoxUi
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderUi
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderUiPrev
 import com.clemond.api_test_open_library.ui.composables.SignInScreenComps.InputFieldUi
@@ -37,10 +39,15 @@ fun HomeScreen(navController: NavController) {
                 .background(brush = myBackgroundColor),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            HeaderUi()
+            HeaderUi(navController)
+            Box(modifier = Modifier.padding(vertical = 5.dp))
             InputFieldUi(label = "search", icon = Icons.Default.Search){
                 userSearch = it
             }
+            Row {
+                DisplayBoxUi()
+            }
+
         }
     }
 }
@@ -59,11 +66,15 @@ fun HomeScreenPrev() {
                 .background(brush = myBackgroundColor),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            HeaderUi()
+            //HeaderUi()
             Box(modifier = Modifier.padding(vertical = 5.dp))
             InputFieldUi(label = "search", icon = Icons.Default.Search){
                 userSearch = it
             }
+            Row {
+                DisplayBoxUi()
+            }
+
         }
     }
 }
