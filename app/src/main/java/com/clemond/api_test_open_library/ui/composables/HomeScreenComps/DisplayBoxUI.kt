@@ -38,7 +38,7 @@ fun DisplayBoxUi() {
 
     Column (
     ){
-            BoxTitleTextUi("Currently Reading")
+            BoxTitleTextUi("Recently added books")
         Box(
             modifier = Modifier
                 .fillMaxWidth()
