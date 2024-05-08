@@ -26,5 +26,7 @@ val headerBackgroundCornerColor = hexColor("#31194a")
 
 val myBannerColor = hexColor("#ffffcc")
 
+val myLightWhite = hexColor("#F5F5DC")
+
 // Gradients
 val myBackgroundColor = Brush.verticalGradient(colors = listOf(myColor1, myColor2))

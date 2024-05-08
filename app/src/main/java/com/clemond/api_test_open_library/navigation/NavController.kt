@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderButtonRowUi
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderButtonUi
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderUi
+import com.clemond.api_test_open_library.ui.composables.ProfileScreenComps.UserCredentialsFormFull
 import com.clemond.api_test_open_library.ui.composables.SignInScreenComps.InputFormsUI
 import com.clemond.api_test_open_library.ui.screens.HomeScreen
 import com.clemond.api_test_open_library.ui.screens.ProfileScreen
@@ -30,14 +31,17 @@ fun NavController() {
         composable("HeaderButtonUi"){
             HeaderButtonUi("",navController,"")
         }
-       // composable("ProfileScreen"){
-       //     ProfileScreen(navController)
-       //  }
+        composable("ProfileScreen"){
+            ProfileScreen(navController)
+         }
         composable("HeaderButtonRowUi"){
             HeaderButtonRowUi(navController)
         }
         composable("HeaderUi"){
             HeaderUi(navController)
+        }
+        composable("UserCredentialsFormFull"){
+            UserCredentialsFormFull(navController)
         }
     }
 
