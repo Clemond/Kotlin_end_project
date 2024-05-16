@@ -61,14 +61,22 @@ dependencies {
     implementation ("io.github.raamcosta.compose-destinations:core:1.10.2" )
     ksp("io.github.raamcosta.compose-destinations:ksp:1.10.2" )
 
-    //API Dependencies
-    implementation ("androidx.activity:activity-compose:1.8.2")
+    // Dependencies for API
+
+    //RETROFIT
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    // GSON
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.google.code.gson:gson:2.10")
+    //COIL - IMAGE
+    implementation ("io.coil-kt:coil-compose:2.6.0")
+    //LIVEDATA
+    implementation ("androidx.compose.runtime:runtime-livedata:1.6.7")
+    //LIFECYCLE
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
+    //COMPOSE
+    implementation ("androidx.activity:activity-compose:1.9.0")
 
-    implementation ("io.coil-kt:coil-compose:1.4.0")
-
+    
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-auth")

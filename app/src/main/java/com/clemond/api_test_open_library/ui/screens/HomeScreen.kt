@@ -72,7 +72,7 @@ fun HomeScreenPrev() {
                 userSearch = it
             }
             Row {
-                DisplayBoxUi()
+                //DisplayBoxUi()
             }
 
         }
