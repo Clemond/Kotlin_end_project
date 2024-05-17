@@ -15,7 +15,7 @@ fun HeaderButtonRowUi(navController: NavController) {
         Modifier.padding(top = 5.dp, bottom = 10.dp)
     ) {
         HeaderButtonUi(buttonText = "Profile", navController, "ProfileScreen")
-        HeaderButtonUi(buttonText = "My books", navController, "")
+        HeaderButtonUi(buttonText = "Search Books", navController, "SearchBookScreen")
         HeaderButtonUi(buttonText = "About", navController, "")
     }
 

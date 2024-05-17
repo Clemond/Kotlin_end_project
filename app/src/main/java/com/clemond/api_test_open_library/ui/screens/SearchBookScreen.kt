@@ -1,20 +1,21 @@
-package com.clemond.api_test_open_library.ui.composables.HomeScreenComps
+package com.clemond.api_test_open_library.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -28,27 +29,40 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.clemond.api_test_open_library.api.Book
 import com.clemond.api_test_open_library.api.BookViewModel
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Search
+import androidx.navigation.NavController
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 @Composable
-fun BookList(viewModel: BookViewModel) {
+fun BookList(viewModel: BookViewModel, navController: NavController) {
     var query by remember { mutableStateOf("")}
 
     Column (
         modifier = Modifier
-            .fillMaxSize()
             .padding(16.dp)
     ){
+        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "", modifier = Modifier.clickable { navController.navigate("HomeScreen") })
         Row (
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(bottom = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            TextField(value = query,
-                onValueChange = {query = it},
-                label = { Text(text = "Search book")},
+            OutlinedTextField(value = query,
+                onValueChange = { query = it },
+                label = { Text(text = "Search book") },
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                        modifier = Modifier.clickable { viewModel.searchBooks(query)}
+                    )
+                },
                 modifier = Modifier.weight(1f)
-                )
+            )
             Spacer(modifier = Modifier.width(8.dp))
             Button(
                 onClick = {viewModel.searchBooks(query)},
@@ -62,13 +76,12 @@ fun BookList(viewModel: BookViewModel) {
 
         LazyColumn(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-            ){
-                items(books.size) {index ->
-                    BookItem(book = books[index])
-
-                }
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ){
+            items(books.size) {index ->
+                BookItem(book = books[index])
             }
+        }
     }
 }
 
@@ -78,8 +91,7 @@ fun BookItem(book: Book) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(8.dp)
     ) {
         val imageUrl = "https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg"
 
@@ -90,14 +102,19 @@ fun BookItem(book: Book) {
                 .size(80.dp)
                 .padding(end = 8.dp),
             contentScale = ContentScale.Crop
+        )
+        Column {
+            Text(text = book.title,
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
             )
-            Column {
-                Text(text = book.title)
-                book.author_name?.let {
-                    Text(
-                        text = it.joinToString { ", " }
-                    )
-                }
+            book.author_name?.let {
+                Text(
+                    text = it.joinToString(", ")
+                )
             }
+        }
     }
 }

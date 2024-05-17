@@ -1,6 +1,7 @@
 package com.clemond.api_test_open_library.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.clemond.api_test_open_library.api.BookViewModel
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.DisplayBoxUi
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderUi
 import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.HeaderUiPrev
@@ -41,11 +43,12 @@ fun HomeScreen(navController: NavController) {
         ) {
             HeaderUi(navController)
             Box(modifier = Modifier.padding(vertical = 5.dp))
-            InputFieldUi(label = "search", icon = Icons.Default.Search){
-                userSearch = it
-            }
+            //InputFieldUi(label = "search", icon = Icons.Default.Search){
+           //     userSearch = it
+            //}
             Row {
-                DisplayBoxUi()
+                //BookList(viewModel = BookViewModel())
+                //DisplayBoxUi()
             }
 
         }
@@ -56,23 +59,19 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun HomeScreenPrev() {
 
-    var userSearch by remember { mutableStateOf("") }
-
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
             modifier = Modifier
-                .background(brush = myBackgroundColor),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(brush = myBackgroundColor)
         ) {
             //HeaderUi()
             Box(modifier = Modifier.padding(vertical = 5.dp))
-            InputFieldUi(label = "search", icon = Icons.Default.Search){
-                userSearch = it
-            }
-            Row {
+            Row(
+            ) {
                 //DisplayBoxUi()
+                //BookList(viewModel = BookViewModel())
             }
 
         }

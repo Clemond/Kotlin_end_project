@@ -8,11 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.Navigation
 import com.clemond.api_test_open_library.api.BookViewModel
 import com.clemond.api_test_open_library.ui.theme.Api_Test_Open_LibraryTheme
 import com.clemond.api_test_open_library.navigation.NavController
-import com.clemond.api_test_open_library.ui.composables.HomeScreenComps.BookList
 import com.google.firebase.auth.FirebaseAuth
+
 
 
 class MainActivity : ComponentActivity() {
@@ -28,12 +29,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MaterialTheme{
-                        BookList(viewModel = viewModel)
-                    }
-                    //NavController()
-                    viewModel.searchBooks("")
-
+                    NavController()
                 }
             }
         }
