@@ -22,20 +22,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun InputFormsUI(navController: NavController) {
 
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    val auth = FirebaseAuth.getInstance()
+
     //For the toast
     val context = LocalContext.current
     val wrongCredentialsToast = Toast.makeText(context,"Wrong username or password!", Toast.LENGTH_SHORT)
-
-    var username by remember { mutableStateOf("")}
-    var password by remember { mutableStateOf("")}
-
-    val accountUsernames = mutableListOf<String>("user1", "user2", "user3")
-    val accountPasswords = mutableListOf<String>("123", "abc", "lego")
-
 
     Surface (
         shadowElevation = 50.dp,
@@ -47,8 +45,8 @@ fun InputFormsUI(navController: NavController) {
             FormTitleUI(formTitle = "Sign In")
 
             InputFieldUi(label = "Username", icon = Icons.Default.Person){
-                // Update the username state
-                username = it
+                // Update the email state
+                email = it
             }
 
             InputFieldUi(label = "Password", icon = Icons.Default.Lock){
@@ -58,15 +56,16 @@ fun InputFormsUI(navController: NavController) {
 
             Button(
                 onClick = {
-                    if (
-                        username == accountUsernames[0] && password == accountPasswords[0] ||
-                        username == accountUsernames[1] && password == accountPasswords[1] ||
-                        username == accountUsernames[2] && password == accountPasswords[2]
-                            ) {
-                        navController.navigate("HomeScreen")
-                    }else{
-                        wrongCredentialsToast.show()
-                    }
+                    auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                //login successful and navigate to home-screen
+                                navController.navigate("HomeScreen")
+                            } else {
+                                //login failed and show toast
+                                wrongCredentialsToast.show()
+                            }
+                        }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Gray),
                 modifier = Modifier
