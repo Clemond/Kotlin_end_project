@@ -43,14 +43,6 @@ fun HomeScreen(navController: NavController) {
         ) {
             HeaderUi(navController)
             Box(modifier = Modifier.padding(vertical = 5.dp))
-            //InputFieldUi(label = "search", icon = Icons.Default.Search){
-           //     userSearch = it
-            //}
-            Row {
-                //BookList(viewModel = BookViewModel())
-                //DisplayBoxUi()
-            }
-
         }
     }
 }
@@ -66,14 +58,6 @@ fun HomeScreenPrev() {
             modifier = Modifier
                 .background(brush = myBackgroundColor)
         ) {
-            //HeaderUi()
-            Box(modifier = Modifier.padding(vertical = 5.dp))
-            Row(
-            ) {
-                //DisplayBoxUi()
-                //BookList(viewModel = BookViewModel())
-            }
-
         }
     }
 }

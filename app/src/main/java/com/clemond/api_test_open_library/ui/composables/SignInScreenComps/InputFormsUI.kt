@@ -31,7 +31,7 @@ fun InputFormsUI(navController: NavController) {
     var password by remember { mutableStateOf("") }
     val auth = FirebaseAuth.getInstance()
 
-    //For the toast
+    //Toast
     val context = LocalContext.current
     val wrongCredentialsToast = Toast.makeText(context,"Wrong username or password!", Toast.LENGTH_SHORT)
 
@@ -44,7 +44,7 @@ fun InputFormsUI(navController: NavController) {
         ) {
             FormTitleUI(formTitle = "Sign In")
 
-            InputFieldUi(label = "Username", icon = Icons.Default.Person){
+            InputFieldUi(label = "Email", icon = Icons.Default.Person){
                 // Update the email state
                 email = it
             }

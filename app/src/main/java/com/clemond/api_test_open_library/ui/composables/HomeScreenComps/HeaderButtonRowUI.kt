@@ -16,7 +16,7 @@ fun HeaderButtonRowUi(navController: NavController) {
     ) {
         HeaderButtonUi(buttonText = "Profile", navController, "ProfileScreen")
         HeaderButtonUi(buttonText = "Search Books", navController, "SearchBookScreen")
-        HeaderButtonUi(buttonText = "About", navController, "")
+        HeaderButtonUi(buttonText = "About", navController, "HomeScreen") // no about screen jet.
     }
 
 }
